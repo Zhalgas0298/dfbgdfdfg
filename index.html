@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Приглашение ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html, body {
+            font-family: 'Nunito', sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .photo-1 { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('1.jpg'); }
+        .photo-2 { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('2.jpg'); }
+        .photo-3 { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('3.jpg'); }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        p { font-size: 1.1rem; line-height: 1.5; }
+
+        .secret-btn {
+            margin-top: 25px;
+            padding: 18px 45px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.5);
+            animation: pulse 2s infinite;
+            width: 100%;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 1.5s infinite;
+            font-size: 28px;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        #info-page {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .info-card {
+            background: white;
+            color: #333;
+            padding: 40px 30px;
+            border-radius: 35px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .info-card h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff4757;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .details p { font-size: 1.2rem; margin: 10px 0; color: #333; }
+
+        .gis-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 35px;
+            background: #2ed573;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        @keyframes wordReveal {
+            from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .reveal-text { opacity: 0; animation: wordReveal 0.8s ease forwards; }
+        .delay-1 { animation-delay: 0.3s; }
+        .delay-2 { animation-delay: 0.6s; }
+        .delay-3 { animation-delay: 0.9s; }
+        .delay-4 { animation-delay: 1.2s; }
+        .delay-5 { animation-delay: 1.5s; }
+
+        #main-content { transition: opacity 0.8s ease; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+<div id="main-content">
+
+    <div class="slide photo-1">
+        <div class="content-box">
+            <h2>Помнишь?</h2>
+            <p>Это были крутые моменты!</p>
+        </div>
+        <div class="scroll-hint">↓</div>
+    </div>
+
+    <div class="slide photo-2">
+        <div class="content-box">
+            <h2>Было весело!</h2>
+            <p>Но дальше — больше.</p>
+        </div>
+        <div class="scroll-hint">↓</div>
+    </div>
+
+<div class="slide photo-3" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <h2>Готов(а)?</h2>
+    <p>Жми на кнопку, чтобы узнать секрет.</p>
+    <button class="secret-btn" onclick="revealSecret()">Узнать детали ✨</button>
+</div>
+
+</div>
+
+<div id="info-page">
+    <div class="info-card">
+        <h1 class="reveal-text delay-1">Ждем тебя! 🎉</h1>
+        <div class="details">
+            <p class="reveal-text delay-2">Дата: <b style="color:#ff4757">30 апреля</b></p>
+            <p class="reveal-text delay-3">Время: <b style="color:#ff4757">18:00</b></p>
+            <p class="reveal-text delay-4" style="font-size: 1.3rem; margin-top: 10px;"><b>Место:</b></p>
+        </div>
+        <a href="https://2gis.kz/astana/geo/70000001086700355" target="_blank" class="gis-btn reveal-text delay-5">
+            📍 Построить маршрут
+        </a>
+    </div>
+</div>
+
+<script>
+    const music = document.getElementById('bgMusic');
+    let musicStarted = false;
+
+    function startMusic() {
+        if (!musicStarted) {
+            music.volume = 0;
+            music.play().catch(() => {});
+            let fadeIn = setInterval(() => {
+                if (music.volume < 0.95) music.volume = Math.min(1, music.volume + 0.05);
+                else { music.volume = 1; clearInterval(fadeIn); }
+            }, 100);
+            musicStarted = true;
+        }
+    }
+
+    window.addEventListener('scroll', startMusic, { passive: true });
+
+    function revealSecret() {
+        startMusic();
+        const mainContent = document.getElementById('main-content');
+        mainContent.style.opacity = '0';
+        setTimeout(() => {
+            mainContent.style.display = 'none';
+            const infoPage = document.getElementById('info-page');
+            infoPage.style.display = 'flex';
+            setTimeout(() => { infoPage.style.opacity = '1'; }, 50);
+        }, 800);
+    }
+</script>
+
+</body>
+</html>
